@@ -1,0 +1,11 @@
+[x] Should have header 
+[x] Should have routes established through the header
+[] Should sliding top photo page
+[] Should graph of data top 10 or proverty line/average wealth/ api / steam games/ twitch 
+[] Should a component rendering 3d object
+[] Should be able to interact with the 3d object
+[] Should create free mason logo for the 3d object 
+
+---Thoughts---
+-> Three/react-three fiber has the ability to create VR/AR settings. Maybe use it later for my project?
+-> Create data graphs for top 10 something? or games with top viewership on twitch and/or youtube, bilibi, facebook gaming ////or steam games(by regions)
