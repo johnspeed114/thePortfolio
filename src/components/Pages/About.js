@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import Hello from './requests/hello'
+import Hello from '../Requests/hello';
 
 function About() {
   return (
@@ -8,7 +8,7 @@ function About() {
       <h1>About</h1>
       <Hello />
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

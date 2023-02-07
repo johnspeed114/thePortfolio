@@ -1,17 +1,22 @@
-import React from 'react'
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import About from './About'
-import Games from './Games'
-import Home from './Home'
-import logo from '../mylogo.png'
+// @ts-nocheck
+import React from 'react';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import About from '../Pages/About';
+import Games from '../Pages/Games';
+import Home from '../Pages/Home';
+import logo from '../../assets/mylogo.png';
 
 const NavBarComp = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
-        <Navbar bg='light' variant='light' expand='lg'>
-          <Navbar.Brand href='#home'>
+        <Navbar
+          bg='light'
+          variant='light'
+          expand='lg'
+          style={{ paddingLeft: '1em' }}>
+          <Navbar.Brand href='/'>
             <img
               src={logo}
               width='40'
@@ -51,33 +56,27 @@ const NavBarComp = () => {
                 Link
               </Nav.Link>
             </Nav>
-            <Form className='d-flex'>
+            <Form className='d-flex' style={{ marginLeft: '20px' }}>
               <FormControl
                 type='search'
                 placeholder='Search'
                 className='mr-2'
                 aria-label='Search'
               />
-              <Button variant='outline-success'>Search</Button>
+              <Button variant='success'>Search</Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>
       </div>
       <div>
-        <Switch>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/games'>
-            <Games />
-          </Route>
-          <Route path='/'>
-            <Home />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path='/about' element={<About />} />
+          <Route path='/games' element={<Games />} />
+          <Route path='/' element={<Home />} />
+        </Routes>
       </div>
-    </Router>
-  )
-}
+    </BrowserRouter>
+  );
+};
 
-export default NavBarComp
+export default NavBarComp;

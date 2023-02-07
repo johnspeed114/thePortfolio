@@ -1,14 +1,14 @@
-import React from 'react'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Stars } from '@react-three/drei'
+import React from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Stars } from '@react-three/drei';
 
 function Box() {
   return (
     <mesh>
-      <boxBufferGeometry attach='geometry' />
+      <boxGeometry attach='geometry' />
       <meshLambertMaterial attach='material' color='hotpink' wireframe />
     </mesh>
-  )
+  );
 }
 
 function ThreeDLogo() {
@@ -21,7 +21,7 @@ function ThreeDLogo() {
       <spotLight position={[10, 15, 10]} angle={0.3} />
       <Box />
     </Canvas>
-  )
+  );
 }
 
-export default ThreeDLogo
+export default ThreeDLogo;

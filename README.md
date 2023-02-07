@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Let's get started with REACT Three JS Portfolio
+
+FYI since it's an old repo. need to use npm i -g npm-check-updates
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

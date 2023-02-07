@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+// @ts-nocheck
+import React from 'react';
 
-import ThreeDLogo from 'components/ThreeDLogo.js'
-import '../App.scss'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import ThreeDLogo from 'components/Utils/ThreeDLogo.js';
+import '../../App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
   Container,
@@ -13,7 +14,7 @@ import {
   Breadcrumb,
   Card,
   Form,
-} from 'react-bootstrap'
+} from 'react-bootstrap';
 
 function Home() {
   return (
@@ -66,7 +67,7 @@ function Home() {
         </Container>
       </header>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
