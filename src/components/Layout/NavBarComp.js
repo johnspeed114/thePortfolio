@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import About from '../Pages/About';
 import Games from '../Pages/Games';
 import Home from '../Pages/Home';
+import Login from 'components/Pages/Login';
 import logo from '../../assets/mylogo.png';
 
 const NavBarComp = () => {
@@ -28,7 +29,9 @@ const NavBarComp = () => {
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls='navbarScroll' />
-          <Navbar.Collapse id='navbarScroll'>
+          <Navbar.Collapse
+            id='navbarScroll'
+            style={{ justifyContent: 'space-between' }}>
             <Nav
               className='mr-auto my-2 my-lg-0'
               style={{ maxHeight: '100px' }}
@@ -39,7 +42,7 @@ const NavBarComp = () => {
               <Nav.Link href='#action2' as={Link} to={'/about'}>
                 About
               </Nav.Link>
-              <Nav.Link href='#action2' as={Link} to={'/games'}>
+              <Nav.Link href='#action3' as={Link} to={'/games'}>
                 Games
               </Nav.Link>
               {/* <NavDropdown title='Link' id='navbarScrollingDropdown'>
@@ -56,15 +59,23 @@ const NavBarComp = () => {
                 Link
               </Nav.Link>
             </Nav>
-            <Form className='d-flex' style={{ marginLeft: '20px' }}>
-              <FormControl
-                type='search'
-                placeholder='Search'
-                className='mr-2'
-                aria-label='Search'
-              />
-              <Button variant='success'>Search</Button>
-            </Form>
+            <div className='d-flex' style={{ marginRight: '1em' }}>
+              <Form className='d-flex'>
+                <FormControl
+                  type='search'
+                  placeholder='Search'
+                  className='mr-2'
+                  aria-label='Search'
+                />
+                <Button variant='success'>Search</Button>
+              </Form>
+              <div>
+                <Button as={Link} to={'/login'} style={{ marginLeft: '2em' }}>
+                  Login
+                </Button>
+                <Button>Register</Button>
+              </div>
+            </div>
           </Navbar.Collapse>
         </Navbar>
       </div>
@@ -73,6 +84,7 @@ const NavBarComp = () => {
           <Route path='/about' element={<About />} />
           <Route path='/games' element={<Games />} />
           <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -6,6 +6,9 @@
 [] Should be able to interact with the 3d object
 [] Should create free mason logo for the 3d object 
 
+[]--Main priority-- use useContext and useReducer to create global state for my login data with points what you did
+[] you can gain points by playing a game, or posting a 
+
 ---Thoughts---
 -> Three/react-three fiber has the ability to create VR/AR settings. Maybe use it later for my project?
 -> Create data graphs for top 10 something? or games with top viewership on twitch and/or youtube, bilibi, facebook gaming ////or steam games(by regions)

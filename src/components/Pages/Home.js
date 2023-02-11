@@ -5,16 +5,7 @@ import ThreeDLogo from 'components/Utils/ThreeDLogo.js';
 import '../../App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Alert,
-  Breadcrumb,
-  Card,
-  Form,
-} from 'react-bootstrap';
+import { Container, Button, Alert, Breadcrumb, Card } from 'react-bootstrap';
 
 function Home() {
   return (
@@ -28,28 +19,8 @@ function Home() {
             </Card.Body>
           </Card>
           <ThreeDLogo />
-          <Form>
-            <Row>
-              <Col md>
-                <Form.Group controlId='formEmail'>
-                  <Form.Label>Email Address</Form.Label>
-                  <Form.Control type='email' placeholder='Example@email.com' />
-                </Form.Group>
-              </Col>
-              <Col md>
-                {/* md is for viewpoint for mobile screen resizing */}
-                <Form.Group controlId='formPassword'>
-                  {/* saves the password with the control id in browser you can select later! */}
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type='password' placeholder='Password' />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Button variant='secondary' type='submit'>
-              Login
-            </Button>
-          </Form>
-          <Card className='mb-3' style={{ color: '#000' }}>
+
+          <Card className='mb-3' style={{ color: '#000', marginTop: '3%' }}>
             <Card.Img src='https://picsum.photos/200/50' />
             <Card.Body>
               <Card.Title>Card Test</Card.Title>
