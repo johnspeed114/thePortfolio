@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import About from '../Pages/About';
@@ -9,6 +9,9 @@ import Login from 'components/Pages/Login';
 import logo from '../../assets/mylogo.png';
 
 const NavBarComp = () => {
+  //lets start with usestate then move to useContext
+  const [loginState, setLoginState] = useState({ name: 'ddd' });
+
   return (
     <BrowserRouter>
       <div>
@@ -67,14 +70,21 @@ const NavBarComp = () => {
                   className='mr-2'
                   aria-label='Search'
                 />
-                <Button variant='success'>Search</Button>
-              </Form>
-              <div>
-                <Button as={Link} to={'/login'} style={{ marginLeft: '2em' }}>
-                  Login
+                <Button style={{ marginRight: '2em' }} variant='success'>
+                  Search
                 </Button>
-                <Button>Register</Button>
-              </div>
+              </Form>
+              {/* { maybe use react memo since we dont need render this all the time unless logged in */}
+              {!loginState.name.length ? (
+                <div>
+                  <Button as={Link} to={'/login'}>
+                    Login
+                  </Button>
+                  <Button>Register</Button>
+                </div>
+              ) : (
+                <div style={{ margin: 'auto' }}>Welcome {loginState.name}!</div>
+              )}
             </div>
           </Navbar.Collapse>
         </Navbar>

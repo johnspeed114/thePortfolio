@@ -21,7 +21,7 @@ const Login = () => {
           </Form.Group>
         </Col>
       </Row>
-      <Button variant='secondary' type='submit'>
+      <Button style={{ marginTop: '1em' }} variant='secondary' type='submit'>
         Login
       </Button>
     </Form>
