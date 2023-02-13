@@ -12,7 +12,7 @@ export const AuthConextProvider = (props) => {
     }
   }, []);
 
-  //add use reducer like cart provider in food app
+  //[TO DO ]add use reducer like cart provider in food app
 
   const loginHandler = () => {
     localStorage.setItem('isLoggedIn', '1');
