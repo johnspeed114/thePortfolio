@@ -1,10 +1,11 @@
 import React from 'react';
+import AuthProvider from 'store/AuthProvider.js';
 import NavBarComp from './components/Layout/NavBarComp.js';
 function App() {
   return (
-    <div className='App'>
+    <AuthProvider className='App'>
       <NavBarComp />
-    </div>
+    </AuthProvider>
   );
 }
 

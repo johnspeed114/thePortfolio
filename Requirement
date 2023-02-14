@@ -6,8 +6,10 @@
 [] Should be able to interact with the 3d object
 [] Should create free mason logo for the 3d object
 
-[]--Main priority-- use useContext and useReducer to create global state for my login data with points what you did
-[] have an user profile your account
+[x]--Main priority-- use useContext and useReducer to create global state for my login
+[] ==Next priority== addd registration page 
+[] have an user profile your account(next with usereducer)
+[] add encryption for password
 [] have an account setting
 thoughts=> maybe no need for the useReducer for the login since it's yes or no
 We will the useReducer if we pull data from the database

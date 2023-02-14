@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import AuthContext from './auth-context.js';
 
-export const AuthConextProvider = (props) => {
+const AuthProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   useEffect(() => {
     const storedUserLoggin = localStorage.getItem('isLoggedIn');
-    console.log(storedUserLoggin);
     if (storedUserLoggin === '1') {
       setIsLoggedIn(true);
     }
@@ -20,7 +18,7 @@ export const AuthConextProvider = (props) => {
   };
 
   const logoutHandler = () => {
-    localStorage.setItem('isLogged', '0');
+    localStorage.setItem('isLoggedIn', '0');
     setIsLoggedIn(false);
   };
 
@@ -36,4 +34,4 @@ export const AuthConextProvider = (props) => {
   );
 };
 
-export default AuthContext;
+export default AuthProvider;

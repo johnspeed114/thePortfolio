@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import AuthContext from 'store/auth-context';
@@ -10,8 +10,6 @@ import Login from 'components/Pages/Login';
 import logo from '../../assets/mylogo.png';
 
 const NavBarComp = () => {
-  //lets start with usestate then move to useContext
-  const [loginState, setLoginState] = useState(false);
   const ctx = useContext(AuthContext);
 
   return (
@@ -78,14 +76,18 @@ const NavBarComp = () => {
               </Form>
               {/* { maybe use react memo since we dont need render this all the time unless logged in */}
               {ctx.isLoggedIn ? (
-                <div>
+                <>
+                <div style={{ margin: 'auto' }}>Welcome!</div>
+                <Button onClick={ctx.onLogout}>Logout</Button>
+                </>
+                
+              ) : (
+                <>
                   <Button as={Link} to={'/login'}>
                     Login
                   </Button>
                   <Button>Register</Button>
-                </div>
-              ) : (
-                <div style={{ margin: 'auto' }}>Welcome!</div>
+                </>
               )}
             </div>
           </Navbar.Collapse>

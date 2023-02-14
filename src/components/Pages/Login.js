@@ -1,7 +1,8 @@
 // @ts-nocheck
-import React, { useState, useContext, useReducer } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import AuthContext from 'store/AuthProvider';
+import AuthContext from 'store/auth-context';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formIsValid, setFormIsValid] = useState(false);
@@ -10,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const submitHandler = (event) => {
     //need to figure out where to put the authprovider component!
@@ -22,6 +24,7 @@ const Login = () => {
       authCtx.onLogin(email, password);
     }
     setFormIsValid(true);
+    navigate('/')
   };
 
   const emailChangeHandler = (event) => {
@@ -33,7 +36,7 @@ const Login = () => {
   };
   return (
     <Form noValidate validated={formIsValid} onSubmit={submitHandler}>
-      <Row>
+      <Row style={{margin: '10px'}}>
         <Col md>
           <Form.Group controlId='formEmail'>
             <Form.Label>Email Address</Form.Label>
@@ -67,9 +70,12 @@ const Login = () => {
           </Form.Group>
         </Col>
       </Row>
-      <Button style={{ marginTop: '1em' }} variant='secondary' type='submit'>
+      <Row className="justify-content-md-center">
+      <Button style={{ marginTop: '1em', width: '10%' }} variant='secondary' type='submit' >
         Login
       </Button>
+      </Row>
+     
     </Form>
   );
 };
