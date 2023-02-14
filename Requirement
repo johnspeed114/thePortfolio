@@ -1,13 +1,16 @@
-[x] Should have header 
+[x] Should have header
 [x] Should have routes established through the header
 [] Should sliding top photo page
-[] Should graph of data top 10 or proverty line/average wealth/ api / steam games/ twitch 
+[] Should graph of data top 10 or proverty line/average wealth/ api / steam games/ twitch
 [] Should a component rendering 3d object
 [] Should be able to interact with the 3d object
-[] Should create free mason logo for the 3d object 
+[] Should create free mason logo for the 3d object
 
 []--Main priority-- use useContext and useReducer to create global state for my login data with points what you did
-[] you can gain points by playing a game, or posting a 
+[] have an user profile your account
+[] have an account setting
+thoughts=> maybe no need for the useReducer for the login since it's yes or no
+We will the useReducer if we pull data from the database
 
 ---Thoughts---
 -> Three/react-three fiber has the ability to create VR/AR settings. Maybe use it later for my project?

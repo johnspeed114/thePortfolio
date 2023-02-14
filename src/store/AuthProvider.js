@@ -6,7 +6,7 @@ export const AuthConextProvider = (props) => {
 
   useEffect(() => {
     const storedUserLoggin = localStorage.getItem('isLoggedIn');
-
+    console.log(storedUserLoggin);
     if (storedUserLoggin === '1') {
       setIsLoggedIn(true);
     }

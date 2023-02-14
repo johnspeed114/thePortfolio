@@ -1,7 +1,8 @@
 // @ts-nocheck
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import AuthContext from 'store/auth-context';
 import About from '../Pages/About';
 import Games from '../Pages/Games';
 import Home from '../Pages/Home';
@@ -10,7 +11,8 @@ import logo from '../../assets/mylogo.png';
 
 const NavBarComp = () => {
   //lets start with usestate then move to useContext
-  const [loginState, setLoginState] = useState({ name: 'ddd' });
+  const [loginState, setLoginState] = useState(false);
+  const ctx = useContext(AuthContext);
 
   return (
     <BrowserRouter>
@@ -75,7 +77,7 @@ const NavBarComp = () => {
                 </Button>
               </Form>
               {/* { maybe use react memo since we dont need render this all the time unless logged in */}
-              {!loginState.name.length ? (
+              {ctx.isLoggedIn ? (
                 <div>
                   <Button as={Link} to={'/login'}>
                     Login
@@ -83,7 +85,7 @@ const NavBarComp = () => {
                   <Button>Register</Button>
                 </div>
               ) : (
-                <div style={{ margin: 'auto' }}>Welcome {loginState.name}!</div>
+                <div style={{ margin: 'auto' }}>Welcome!</div>
               )}
             </div>
           </Navbar.Collapse>
