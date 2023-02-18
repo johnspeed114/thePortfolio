@@ -8,6 +8,7 @@ import Games from '../Pages/Games';
 import Home from '../Pages/Home';
 import Login from 'components/Pages/Login';
 import logo from '../../assets/mylogo.png';
+import Register from 'components/Pages/Register';
 
 const NavBarComp = () => {
   const ctx = useContext(AuthContext);
@@ -86,21 +87,20 @@ const NavBarComp = () => {
                   <Button as={Link} to={'/login'}>
                     Login
                   </Button>
-                  <Button>Register</Button>
+                  <Button as={Link} to={'/register'}>Register</Button>
                 </>
               )}
             </div>
           </Navbar.Collapse>
         </Navbar>
       </div>
-      <div>
         <Routes>
           <Route path='/about' element={<About />} />
           <Route path='/games' element={<Games />} />
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />}/>
         </Routes>
-      </div>
     </BrowserRouter>
   );
 };

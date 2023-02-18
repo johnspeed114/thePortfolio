@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import AuthContext from './auth-context.js';
+import React, { useEffect, useState } from "react";
+import AuthContext from "./auth-context.js";
 
 const AuthProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
-    const storedUserLoggin = localStorage.getItem('isLoggedIn');
-    if (storedUserLoggin === '1') {
+    const storedUserLoggin = localStorage.getItem("isLoggedIn");
+    if (storedUserLoggin === "1") {
       setIsLoggedIn(true);
     }
   }, []);
@@ -13,12 +13,12 @@ const AuthProvider = (props) => {
   //[TO DO ]add use reducer like cart provider in food app
 
   const loginHandler = () => {
-    localStorage.setItem('isLoggedIn', '1');
+    localStorage.setItem("isLoggedIn", "1");
     setIsLoggedIn(true);
   };
 
   const logoutHandler = () => {
-    localStorage.setItem('isLoggedIn', '0');
+    localStorage.setItem("isLoggedIn", "0");
     setIsLoggedIn(false);
   };
 
@@ -28,7 +28,8 @@ const AuthProvider = (props) => {
         isLoggedIn: isLoggedIn,
         onLogout: logoutHandler,
         onLogin: loginHandler,
-      }}>
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );

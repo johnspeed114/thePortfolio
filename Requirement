@@ -1,9 +1,10 @@
+---FYI--- Look into the style and ui later, FIRST, functions and features
+
 [x] Should have header
 [x] Should have routes established through the header
 [] Should sliding top photo page
 [] Should graph of data top 10 or proverty line/average wealth/ api / steam games/ twitch
-[] Should a component rendering 3d object
-[] Should be able to interact with the 3d object
+[] Should clean up the navbar text style and color to be like the left side
 [] Should create free mason logo for the 3d object
 
 [x]--Main priority-- use useContext and useReducer to create global state for my login
