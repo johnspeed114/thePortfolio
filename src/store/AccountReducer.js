@@ -1,5 +1,3 @@
-import React from "react";
-
 export const errorReducer = (state, action) => {
   if (action.type === "@_MISSING") {
     return { error: "Missing @ in your email" };
@@ -8,12 +6,22 @@ export const errorReducer = (state, action) => {
 
 export const formReducer = (state, action) => {
   //[To Do] once we establish this reducer, we will change conditionals to switch
-  if (action.type === "EMAIL") {
-    //[FYI] always replace the state not mutuate them!
-    return { ...state, email: action.value };
-  }
-  if (action.type === "PASSWORD") {
-    return { ...state, password: action.value };
+  switch (action.type) {
+    case "USERNAME": {
+      return {
+        ...state,
+        username: action.value,
+      };
+    }
+    case "EMAIL": {
+      return { ...state, email: action.value };
+    }
+    case "PASSWORD": {
+      return { ...state, password: action.value };
+    }
+    case "CONFIRM_PASSWORD": {
+      return { ...state, confirmPassword: action.value };
+    }
   }
 
   throw Error("Unknown Error: " + action.type);

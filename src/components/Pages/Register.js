@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, { useReducer, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { errorReducer, formReducer } from "store/AccountReducer";
 
 const Register = () => {
@@ -9,13 +10,16 @@ const Register = () => {
   const [form, dispatchForm] = useReducer(formReducer, {
     email: "",
     password: "",
+    confirmPassword: "",
     username: "",
     bday: "",
   });
-  const [formIsValid, setFormIsValid] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState({});
+  const navigate = useNavigate();
+
+  const usernameChangeHandler = (event) => {
+    dispatchForm({ type: "USERNAME", value: event.target.value });
+  };
 
   const emailChangeHandler = (event) => {
     dispatchForm({ type: "EMAIL", value: event.target.value });
@@ -34,17 +38,34 @@ const Register = () => {
     dispatchForm({ type: "PASSWORD", value: event.target.value });
   };
 
+  const confPasswordChangeHandler = (event) => {
+    dispatchForm({ type: "CONFIRM_PASSWORD", value: event.target.value });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    //[TO Do] Switch to switch conditonal
     //There is a lot of redundencies think of ways to be more lean
     //Logic is fucked need to think more about this
+    if (!form.username) {
+      setError((prevError) => ({
+        ...prevError,
+        username: "Please enter your username",
+      }));
+    }
+
+    if (form.username) {
+      //[To do] need to add verficiation conditional if the username has been used
+      setError((prevError) => ({
+        ...prevError,
+        username: "",
+      }));
+    }
+
     if (!form.email) {
       setError((prevError) => ({
         ...prevError,
         email: "Please enter your email",
       }));
-      // setFormIsValid(true);
     }
     if (form.email.length > 0) {
       if (!form.email.includes("@")) {
@@ -62,7 +83,6 @@ const Register = () => {
         ...prevError,
         password: "Please enter your password",
       }));
-      // setFormIsValid(true);
     }
 
     if (form.password.length > 0) {
@@ -88,13 +108,52 @@ const Register = () => {
         }
       }
     }
+
+    if (!form.confirmPassword) {
+      setError((prevError) => ({
+        ...prevError,
+        confirmPassword: "Please confirm your password",
+      }));
+    }
+
+    if (form.confirmPassword) {
+      if (form.confirmPassword !== form.password)
+        setError((prevError) => ({
+          ...prevError,
+          confirmPassword:
+            "The confirmed password is not same as the password. Please correct that",
+        }));
+      else {
+        setError((prevError) => ({
+          ...prevError,
+          confirmPassword: "",
+        }));
+      }
+    }
     //[TO DO] add a password confirmation, names, bday
-    //[To do] redirect url for both cancel (to home) and submit(to a new congratz registration page)
+    //[To do] backend send an api to the request the verification, if good then pass to congratz page
+    //[TO do] encrypt your password
+    //[TO do] need to figure out how to valid and then redirect the url
+    navigate("/success");
   };
 
   return (
     <div>
       <Form noValidate onSubmit={handleSubmit}>
+        <Form.Group controlId="formUsername">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type=""
+            placeholder="Username"
+            onChange={usernameChangeHandler}
+            value={form.username}
+            required
+            isInvalid={!!error.username}
+          />
+          <Form.Control.Feedback type="invalid">
+            {error.username}
+          </Form.Control.Feedback>
+        </Form.Group>
         <Form.Group controlId="formEmail">
           <Form.Label>Email Address</Form.Label>
           <Form.Control
@@ -126,8 +185,22 @@ const Register = () => {
             {error.password}
           </Form.Control.Feedback>
         </Form.Group>
+        <Form.Group>
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Confirm Password"
+            value={form.confirmPassword}
+            required
+            onChange={confPasswordChangeHandler}
+            isInvalid={!!error.confirmPassword}
+          />
+          <Form.Control.Feedback type="invalid">
+            {error.confirmPassword}
+          </Form.Control.Feedback>
+        </Form.Group>
         <Button type="submit">Submit</Button>
-        <Button>Cancel</Button>
+        <Button onClick={() => navigate("/")}>Cancel</Button>
       </Form>
     </div>
   );

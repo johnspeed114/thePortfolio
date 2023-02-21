@@ -9,6 +9,7 @@ import Home from '../Pages/Home';
 import Login from 'components/Pages/Login';
 import logo from '../../assets/mylogo.png';
 import Register from 'components/Pages/Register';
+import RegSuccess from 'components/Pages/RegSuccess';
 
 const NavBarComp = () => {
   const ctx = useContext(AuthContext);
@@ -100,6 +101,7 @@ const NavBarComp = () => {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />}/>
+          <Route path='/success' element={<RegSuccess/>}/>
         </Routes>
     </BrowserRouter>
   );
