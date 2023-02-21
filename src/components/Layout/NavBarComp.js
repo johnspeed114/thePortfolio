@@ -79,30 +79,31 @@ const NavBarComp = () => {
               {/* { maybe use react memo since we dont need render this all the time unless logged in */}
               {ctx.isLoggedIn ? (
                 <>
-                <div style={{ margin: 'auto' }}>Welcome!</div>
-                <Button onClick={ctx.onLogout}>Logout</Button>
+                  <div style={{ margin: 'auto' }}>Welcome!</div>
+                  <Button onClick={ctx.onLogout}>Logout</Button>
                 </>
-                
               ) : (
                 <>
                   <Button as={Link} to={'/login'}>
                     Login
                   </Button>
-                  <Button as={Link} to={'/register'}>Register</Button>
+                  <Button as={Link} to={'/register'}>
+                    Register
+                  </Button>
                 </>
               )}
             </div>
           </Navbar.Collapse>
         </Navbar>
       </div>
-        <Routes>
-          <Route path='/about' element={<About />} />
-          <Route path='/games' element={<Games />} />
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />}/>
-          <Route path='/success' element={<RegSuccess/>}/>
-        </Routes>
+      <Routes>
+        <Route path='/about' element={<About />} />
+        <Route path='/games' element={<Games />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/success' element={<RegSuccess />} />
+      </Routes>
     </BrowserRouter>
   );
 };
