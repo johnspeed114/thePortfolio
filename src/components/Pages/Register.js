@@ -26,7 +26,6 @@ const Register = () => {
 
     //onchange might have some limitations due to feedback triggering for all inputs
     //lets just use handlesubmit with usestate
-    //[to do tomorrow] create handlesubmit with error checks if state the email, password length(with number and capital), and no empty inputs
   };
 
   const passwordChangeHandler = (event) => {
@@ -128,7 +127,8 @@ const Register = () => {
     //[TO DO] add a password confirmation, names, bday
     //[To do] backend send an api to the request the verification, if good then pass to congratz page
     //[TO do] encrypt your password
-    //[TO do] ref to line 75 of this component, lets just use a grouping method of if else, instead of just checking with state error(closure issue)
+    //[TO do] ref to line 75 of this component, 
+    // lets just use a grouping method of if else, instead of just checking with state error(closure issue)
     if (Object.keys(error).length === 0) {
       console.log(error);
       // navigate('/success');
