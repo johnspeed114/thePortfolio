@@ -38,8 +38,10 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //There is a lot of redundencies think of ways to be more lean
-    //Logic is fucked need to think more about this
+    //Lets separate the error handling logic with client input side and database backend logic error handling
+    //[To Do] handlesubmit should check username and email has been used or not
+    //[To Do] client input error handling below should be handled like my react course
+    //-> Just use formik lol
     if (!form.username) {
       setError((prevError) => ({
         ...prevError,
@@ -127,7 +129,7 @@ const Register = () => {
     //[TO DO] add a password confirmation, names, bday
     //[To do] backend send an api to the request the verification, if good then pass to congratz page
     //[TO do] encrypt your password
-    //[TO do] ref to line 75 of this component, 
+    //[TO do] ref to line 75 of this component,
     // lets just use a grouping method of if else, instead of just checking with state error(closure issue)
     if (Object.keys(error).length === 0) {
       console.log(error);
