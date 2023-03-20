@@ -17,6 +17,7 @@ const Register = () => {
   const [error, setError] = useState({});
   const navigate = useNavigate();
 
+  //instead of multiple changers we can just use one with a dyncamic dispatchForm
   const usernameChangeHandler = (event) => {
     dispatchForm({ type: 'USERNAME', value: event.target.value });
   };
@@ -41,7 +42,6 @@ const Register = () => {
     //Lets separate the error handling logic with client input side and database backend logic error handling
     //[To Do] handlesubmit should check username and email has been used or not
     //[To Do] client input error handling below should be handled like my react course
-    //-> Just use formik lol
     if (!form.username) {
       setError((prevError) => ({
         ...prevError,
