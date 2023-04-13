@@ -3,6 +3,7 @@ import React, { useReducer, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { errorReducer, formReducer } from 'store/AccountReducer';
+import validateInput from 'components/Utils/ValidationLogic';
 
 const Register = () => {
   // const [error, dispatchError] = useReducer(errorReducer, {error:''})
@@ -12,7 +13,6 @@ const Register = () => {
     password: '',
     confirmPassword: '',
     username: '',
-    bday: '',
   });
   const [error, setError] = useState({});
   const navigate = useNavigate();
@@ -36,103 +36,45 @@ const Register = () => {
     dispatchForm({ type: 'CONFIRM_PASSWORD', value: event.target.value });
   };
 
+  //Fetch api post register user data 
+  const postRegisterData = async () => {
+    console.log(form)
+    //with this useReducer we can map for the data out to be posted in firebase or just send it whole?
+    const response = await fetch ('https://portfolio-db-8d1f9-default-rtdb.firebaseio.com/users.json', 
+    {
+      method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      form,
+    }), 
+  })
+  //[To do] make this funciton post http to firebase properly 
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     //There is a lot of redundencies think of ways to be more lean
     //Logic is fucked need to think more about this
-    if (!form.username) {
-      setError((prevError) => ({
-        ...prevError,
-        username: 'Please enter your username',
-      }));
-    }
-
-    if (form.username) {
-      //[To do] need to add verficiation conditional if the username has been used
-      setError((prevError) => ({
-        ...prevError,
-        username: '',
-      }));
-    }
-
-    if (!form.email) {
-      setError((prevError) => ({
-        ...prevError,
-        email: 'Please enter your email',
-      }));
-    }
-    if (form.email.length > 0) {
-      if (!form.email.includes('@')) {
-        setError((prevError) => ({
-          ...prevError,
-          email: 'Email is missing "@". Please input the correct format',
-        }));
-      } else {
-        setError((prevError) => ({ ...prevError, email: '' }));
+    const newErrors = Object.entries(form).reduce((acc, [name, value]) => {
+      const errorMessage = validateInput(name, value, form);
+      if (errorMessage) {
+        acc[name] = errorMessage;
       }
-    }
-    //[TO Do]all these null/undefined checkers are redundant we should just combine them into one
-    if (!form.password) {
-      setError((prevError) => ({
-        ...prevError,
-        password: 'Please enter your password',
-      }));
-    }
-
-    if (form.password.length > 0) {
-      if (form.password.length < 7) {
-        setError((prevError) => ({
-          ...prevError,
-          password:
-            'Password too short! Please enter a password longer than 6 characters',
-        }));
-      } else {
-        const pwRegEx = /(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
-        if (!pwRegEx.test(form.password)) {
-          setError((prevError) => ({
-            ...prevError,
-            password:
-              'You are missing a special character, number, and/or uppercase letter. Please include it in your password.',
-          }));
-        } else {
-          setError((prevError) => ({
-            ...prevError,
-            password: '',
-          }));
-        }
-      }
+      return acc;
+    }, {});
+  
+    setError(newErrors);
+    console.log(error.confirmPassword)
+  
+    if (Object.keys(newErrors).length === 0) {
+      console.log("No errors. Proceed with the registration process.");
+      postRegisterData()
     }
 
-    if (!form.confirmPassword) {
-      setError((prevError) => ({
-        ...prevError,
-        confirmPassword: 'Please confirm your password',
-      }));
-    }
-
-    if (form.confirmPassword) {
-      if (form.confirmPassword !== form.password)
-        setError((prevError) => ({
-          ...prevError,
-          confirmPassword:
-            'The confirmed password is not same as the password. Please correct that',
-        }));
-      else {
-        setError((prevError) => ({
-          ...prevError,
-          confirmPassword: '',
-        }));
-      }
-    }
     //[TO DO] add a password confirmation, names, bday
     //[To do] backend send an api to the request the verification, if good then pass to congratz page
     //[TO do] encrypt your password
-    //[TO do] ref to line 75 of this component, 
     // lets just use a grouping method of if else, instead of just checking with state error(closure issue)
-    if (Object.keys(error).length === 0) {
-      console.log(error);
-      // navigate('/success');
-    }
   };
 
   return (
