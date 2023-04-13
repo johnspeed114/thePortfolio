@@ -8,12 +8,14 @@
 [] Should create free mason logo for the 3d object
 
 [x]--Main priority-- use useContext and useReducer to create global state for my login
-[] ==Next priority== addd registration page 
+[] ==Next priority== addd registration page
 [] have an user profile your account(next with usereducer)
 [] add encryption for password
 [] have an account setting
 thoughts=> maybe no need for the useReducer for the login since it's yes or no
 We will the useReducer if we pull data from the database
+
+[] IMPORTANT create a pdf iframe added! added japanese too!
 
 ---Thoughts---
 -> Three/react-three fiber has the ability to create VR/AR settings. Maybe use it later for my project?

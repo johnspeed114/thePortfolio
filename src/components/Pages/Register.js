@@ -17,6 +17,7 @@ const Register = () => {
   const [error, setError] = useState({});
   const navigate = useNavigate();
 
+  //instead of multiple changers we can just use one with a dyncamic dispatchForm
   const usernameChangeHandler = (event) => {
     dispatchForm({ type: 'USERNAME', value: event.target.value });
   };
