@@ -41,7 +41,7 @@ const NavBarComp = () => {
               className='mr-auto my-2 my-lg-0'
               style={{ maxHeight: '100px' }}
               navbarScroll>
-              <Nav.Link href='#action1' as={Link} to={'/'}>
+              <Nav.Link href='#action1' as={Link} to={'/thePortfolio'}>
                 Home
               </Nav.Link>
               <Nav.Link href='#action2' as={Link} to={'/about'}>
@@ -99,7 +99,7 @@ const NavBarComp = () => {
       <Routes>
         <Route path='/about' element={<About />} />
         <Route path='/games' element={<Games />} />
-        <Route path='/' element={<Home />} />
+        <Route path='/thePortfolio' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/success' element={<RegSuccess />} />
