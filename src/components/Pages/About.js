@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Hello from '../requests/hello.js';
+import Hello from '../Requests/hello.js';
 
 function About() {
   return (

@@ -37,25 +37,38 @@ const Register = () => {
     dispatchForm({ type: 'CONFIRM_PASSWORD', value: event.target.value });
   };
 
-  //Fetch api post register user data 
+  //Fetch api post register user data
   const postRegisterData = async () => {
-    console.log(form)
     //with this useReducer we can map for the data out to be posted in firebase or just send it whole?
-    const response = await fetch ('https://portfolio-db-8d1f9-default-rtdb.firebaseio.com/users.json', 
-    {
-      method: 'POST',
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      form,
-    }), 
-  })
-  //[To do] make this funciton post http to firebase properly 
-  }
+    const unNestForm = {
+      email: form.email,
+    };
+    const response = await fetch(
+      'https://portfolio-db-8d1f9-default-rtdb.firebaseio.com/users.json',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: form.email,
+          username: form.username,
+          password: form.password,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Somewhere in the code went wrong');
+    }
+    const data = await response.json();
+    console.log(data);
+    //[To do] make this funciton post http to firebase properly
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     //There is a lot of redundencies think of ways to be more lean
     //Logic is fucked need to think more about this
+    console.log(form.email);
     const newErrors = Object.entries(form).reduce((acc, [name, value]) => {
       const errorMessage = validateInput(name, value, form);
       if (errorMessage) {
@@ -63,13 +76,13 @@ const Register = () => {
       }
       return acc;
     }, {});
-  
+
     setError(newErrors);
-    console.log(error.confirmPassword)
-  
+    console.log(error.confirmPassword);
+
     if (Object.keys(newErrors).length === 0) {
-      console.log("No errors. Proceed with the registration process.");
-      postRegisterData()
+      console.log('No errors. Proceed with the registration process.');
+      postRegisterData();
     }
 
     //[TO DO] add a password confirmation, names, bday
