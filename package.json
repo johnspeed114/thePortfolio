@@ -1,9 +1,12 @@
 {
   "name": "the-portfolio",
   "version": "0.1.0",
-  "homepage": "https://johnspeed114.github.io/thePortfolio",
+  "homepage": "https://johnspeed114.github.io/home",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-three/drei": "^9.56.18",
     "@react-three/fiber": "^8.11.0",
     "@testing-library/jest-dom": "^5.16.5",

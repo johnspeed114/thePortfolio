@@ -22,7 +22,8 @@ export const formReducer = (state, action) => {
     case 'CONFIRM_PASSWORD': {
       return { ...state, confirmPassword: action.value };
     }
+    default: {
+      throw Error('Unknown Error: ' + action.type);
+    }
   }
-
-  throw Error('Unknown Error: ' + action.type);
 };
