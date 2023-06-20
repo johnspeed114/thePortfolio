@@ -1,14 +1,17 @@
 // @ts-nocheck
 import React, { useState, useContext } from 'react';
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
 import AuthContext from 'store/auth-context';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
   const [formIsValid, setFormIsValid] = useState(false);
   //for now lets use usestate for pw and email
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
@@ -18,12 +21,29 @@ const Login = () => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
     } else {
-      authCtx.onLogin(email, password);
-      navigate('/');
+      signInWithEmailAndPassword(auth, email, password)
+        .then((useCredential) => {
+          console.log(useCredential);
+
+          navigate('/home');
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode === 'auth/wrong-password') {
+            setError('Wrong Email or Password');
+          } else if (errorCode === 'auth/user-not-found') {
+            setError('No user with this email.');
+          } else {
+            setError(errorMessage); // For other errors
+          }
+          console.log(error);
+        });
     }
+
     setFormIsValid(true);
   };
 
@@ -36,6 +56,7 @@ const Login = () => {
   };
   return (
     <Form noValidate validated={formIsValid} onSubmit={submitHandler}>
+      {error && <Alert variant='danger'>{error}</Alert>}
       <Row style={{ margin: '10px' }}>
         <Col md>
           <Form.Group controlId='formEmail'>

@@ -4,7 +4,7 @@ import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import AuthContext from 'store/auth-context';
 import About from '../Pages/About';
-import Games from '../Pages/Games';
+import Projects from '../Pages/Projects';
 import Home from '../Pages/Home';
 import Login from 'components/Pages/Login';
 import logo from '../../assets/mylogo.png';
@@ -47,8 +47,8 @@ const NavBarComp = () => {
               <Nav.Link href='#action2' as={Link} to={'/about'}>
                 About
               </Nav.Link>
-              <Nav.Link href='#action3' as={Link} to={'/games'}>
-                Games
+              <Nav.Link href='#action3' as={Link} to={'/projects'}>
+                Projects
               </Nav.Link>
               {/* <NavDropdown title='Link' id='navbarScrollingDropdown'>
                 <NavDropdown.Item href='#action3'>Action</NavDropdown.Item>
@@ -60,6 +60,8 @@ const NavBarComp = () => {
                   Something else here
                 </NavDropdown.Item>
               </NavDropdown> */}
+
+              {/* [todo]set up my link page */}
               <Nav.Link href='#' disabled>
                 Link
               </Nav.Link>
@@ -79,8 +81,12 @@ const NavBarComp = () => {
               {/* { maybe use react memo since we dont need render this all the time unless logged in */}
               {ctx.isLoggedIn ? (
                 <>
-                  <div style={{ margin: 'auto' }}>Welcome!</div>
-                  <Button onClick={ctx.onLogout}>Logout</Button>
+                  <div style={{ margin: 'auto' }}>
+                    Welcome! {ctx.displayName}
+                  </div>
+                  <Button onClick={ctx.onLogout} to={'/home'} className='ms-2'>
+                    Logout
+                  </Button>
                 </>
               ) : (
                 <>
@@ -98,7 +104,7 @@ const NavBarComp = () => {
       </div>
       <Routes>
         <Route path='/about' element={<About />} />
-        <Route path='/games' element={<Games />} />
+        <Route path='/projects' element={<Projects />} />
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

@@ -1,8 +1,10 @@
 // @ts-nocheck
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase';
 import React, { useReducer, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Alert, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { errorReducer, formReducer } from 'store/AccountReducer';
+import { formReducer } from 'store/AccountReducer';
 import validateInput from 'components/Utils/ValidationLogic';
 
 const Register = () => {
@@ -40,27 +42,28 @@ const Register = () => {
   //Fetch api post register user data
   const postRegisterData = async () => {
     //with this useReducer we can map for the data out to be posted in firebase or just send it whole?
-    const unNestForm = {
-      email: form.email,
-    };
-    const response = await fetch(
-      'https://portfolio-db-8d1f9-default-rtdb.firebaseio.com/users.json',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: form.email,
-          username: form.username,
-          password: form.password,
-        }),
-      }
-    );
+    //need to check if the email exist
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        form.email,
+        form.password
+      );
 
-    if (!response.ok) {
-      throw new Error('Somewhere in the code went wrong');
+      await updateProfile(result.user, {
+        displayName: form.username,
+      });
+      navigate('/success');
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        // Set an error state here to show a notification
+        setError({
+          message: 'The email address is already in use by another account.',
+        });
+      }
+      console.log(error);
     }
-    const data = await response.json();
-    console.log(data);
+
     //[To do] make this funciton post http to firebase properly
   };
 
@@ -153,6 +156,7 @@ const Register = () => {
             {error.confirmPassword}
           </Form.Control.Feedback>
         </Form.Group>
+        {error.message && <Alert variant='danger'> {error.message}</Alert>}
         <Button type='submit'>Submit</Button>
         <Button onClick={() => navigate('/')}>Cancel</Button>
       </Form>
