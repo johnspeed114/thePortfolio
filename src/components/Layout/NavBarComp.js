@@ -6,10 +6,10 @@ import AuthContext from 'store/auth-context';
 import About from '../Pages/About';
 import Projects from '../Pages/Projects';
 import Home from '../Pages/Home';
-import Login from 'components/Pages/Login';
+import Login from 'components/Pages/Auth/Login';
 import logo from '../../assets/mylogo.png';
-import Register from 'components/Pages/Register';
-import RegSuccess from 'components/Pages/RegSuccess';
+import Register from 'components/Pages/Auth/Register';
+import RegSuccess from 'components/Pages/Auth/RegSuccess';
 
 const NavBarComp = () => {
   const ctx = useContext(AuthContext);
@@ -90,7 +90,7 @@ const NavBarComp = () => {
                 </>
               ) : (
                 <>
-                  <Button as={Link} to={'/login'}>
+                  <Button className='me-2' as={Link} to={'/login'}>
                     Login
                   </Button>
                   <Button as={Link} to={'/register'}>

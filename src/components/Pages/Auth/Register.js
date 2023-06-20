@@ -1,10 +1,11 @@
 // @ts-nocheck
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../../firebase';
-import React, { useReducer, useState } from 'react';
+import { auth } from '../../../firebase';
+import React, { useReducer, useState, useContext } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { formReducer } from 'store/AccountReducer';
+import AuthContext from 'store/auth-context';
 import validateInput from 'components/Utils/ValidationLogic';
 
 const Register = () => {
@@ -17,6 +18,7 @@ const Register = () => {
     username: '',
   });
   const [error, setError] = useState({});
+  const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
 
   //instead of multiple changers we can just use one with a dyncamic dispatchForm
@@ -53,6 +55,7 @@ const Register = () => {
       await updateProfile(result.user, {
         displayName: form.username,
       });
+      authCtx.setDisplayName(form.username);
       navigate('/success');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
@@ -69,9 +72,6 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //There is a lot of redundencies think of ways to be more lean
-    //Logic is fucked need to think more about this
-    console.log(form.email);
     const newErrors = Object.entries(form).reduce((acc, [name, value]) => {
       const errorMessage = validateInput(name, value, form);
       if (errorMessage) {
@@ -88,14 +88,11 @@ const Register = () => {
       postRegisterData();
     }
 
-    //[TO DO] add a password confirmation, names, bday
-    //[To do] backend send an api to the request the verification, if good then pass to congratz page
-    //[TO do] encrypt your password
     // lets just use a grouping method of if else, instead of just checking with state error(closure issue)
   };
 
   return (
-    <div>
+    <div className='m-3'>
       <Form noValidate onSubmit={handleSubmit}>
         <Form.Group controlId='formUsername'>
           <Form.Label>Username</Form.Label>
@@ -142,7 +139,7 @@ const Register = () => {
             {error.password}
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className='mb-3'>
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type='password'
@@ -157,8 +154,12 @@ const Register = () => {
           </Form.Control.Feedback>
         </Form.Group>
         {error.message && <Alert variant='danger'> {error.message}</Alert>}
-        <Button type='submit'>Submit</Button>
-        <Button onClick={() => navigate('/')}>Cancel</Button>
+        <Button className='me-1' type='submit'>
+          Submit
+        </Button>
+        <Button variant='secondary' onClick={() => navigate('/home')}>
+          Cancel
+        </Button>
       </Form>
     </div>
   );

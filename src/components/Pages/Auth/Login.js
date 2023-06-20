@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
 import AuthContext from 'store/auth-context';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../../firebase';
+import { auth } from '../../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
@@ -17,7 +17,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const submitHandler = (event) => {
-    //need to figure out where to put the authprovider component!
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -25,8 +24,8 @@ const Login = () => {
     } else {
       signInWithEmailAndPassword(auth, email, password)
         .then((useCredential) => {
-          console.log(useCredential);
-
+          //FYI to make sure that login state is sync with local
+          authCtx.onLogin();
           navigate('/home');
         })
         .catch((error) => {
@@ -91,14 +90,14 @@ const Login = () => {
           </Form.Group>
         </Col>
       </Row>
-      <Row className='justify-content-md-center'>
+      <div className='d-flex justify-content-md-center'>
         <Button
           style={{ marginTop: '1em', width: '10%' }}
           variant='secondary'
           type='submit'>
           Login
         </Button>
-      </Row>
+      </div>
     </Form>
   );
 };

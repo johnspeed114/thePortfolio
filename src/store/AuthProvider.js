@@ -28,7 +28,7 @@ const AuthProvider = (props) => {
 
     // Cleanup subscription on unmount
     return () => unsubscribe();
-  }, []);
+  }, [isLoggedIn]);
 
   //[TO DO ]add use reducer like cart provider in food app
 
@@ -56,6 +56,7 @@ const AuthProvider = (props) => {
       value={{
         isLoggedIn: isLoggedIn,
         displayName: displayName,
+        setDisplayName,
         onLogout: logoutHandler,
         onLogin: loginHandler,
       }}>
