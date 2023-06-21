@@ -1,10 +1,17 @@
 // @ts-nocheck
 import React, { useContext } from 'react';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+  NavDropdown,
+} from 'react-bootstrap';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import AuthContext from 'store/auth-context';
 import About from '../Pages/About';
-import Projects from '../Pages/Projects';
+import SketchApp from '../Pages/Projects/SketchApp';
 import Home from '../Pages/Home';
 import Login from 'components/Pages/Auth/Login';
 import logo from '../../assets/mylogo.png';
@@ -47,9 +54,18 @@ const NavBarComp = () => {
               <Nav.Link href='#action2' as={Link} to={'/about'}>
                 About
               </Nav.Link>
-              <Nav.Link href='#action3' as={Link} to={'/projects'}>
-                Projects
-              </Nav.Link>
+              <NavDropdown title='Projects' id='navbarScrollingDropdown'>
+                <NavDropdown.Item
+                  href='#action3'
+                  as={Link}
+                  to={'projects/randomized_sketch_app'}>
+                  Randomized Sketch App
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href='#action5'>
+                  Stream Live Rank App
+                </NavDropdown.Item>
+              </NavDropdown>
               {/* <NavDropdown title='Link' id='navbarScrollingDropdown'>
                 <NavDropdown.Item href='#action3'>Action</NavDropdown.Item>
                 <NavDropdown.Item href='#action4'>
@@ -63,7 +79,7 @@ const NavBarComp = () => {
 
               {/* [todo]set up my link page */}
               <Nav.Link href='#' disabled>
-                Link
+                Contact Me
               </Nav.Link>
             </Nav>
             <div className='d-flex' style={{ marginRight: '1em' }}>
@@ -104,8 +120,9 @@ const NavBarComp = () => {
       </div>
       <Routes>
         <Route path='/about' element={<About />} />
-        <Route path='/projects' element={<Projects />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/projects/randomized_sketch_app' element={<SketchApp />} />
+        {/* <Route path='/projects/stream_rank_app' element={<StreamApp />} /> */}
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/success' element={<RegSuccess />} />

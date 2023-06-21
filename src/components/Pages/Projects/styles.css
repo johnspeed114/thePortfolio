@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+}
+
+h2 {
+  display: inline-block;
+  background-color: white;
+}
+
+.clearButton,
+.resizeButton {
+  margin: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: rgb(218, 214, 214);
+  border-radius: 8px;
+  transition-duration: 0.1s;
+  transition-property: color, background-color;
+}
+
+.clearButton:hover,
+.resizeButton:hover {
+  background-color: #2098d1;
+  color: white;
+}
+
+.form-popup {
+  display: block;
+  position: fixed;
+  top: 25%;
+  left: 41%;
+  border: 3px solid #e6fcda;
+  z-index: 9;
+  background-color: rgb(223, 223, 223);
+  border-radius: 6px;
+}
+
+.form-popup .open {
+  display: block;
+}
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: rgb(236, 247, 178);
+}
+
+.form-container input[type='number'] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: rgb(240, 240, 240);
+}
+
+.form-container input[type='number']:focus {
+  background-color: rgb(161, 161, 161);
+}
+
+.form-container .btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.form-container .btnCancel {
+  background-color: red;
+}
+
+.form-container .btn:hover {
+  opacity: 1;
+}
+
+.containerGrid {
+  display: grid;
+  width: 600px;
+  height: 600px;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  margin: auto;
+  border: 1px solid rgb(43, 42, 42);
+}
+
+.gridbox {
+  border: 1px solid rgb(80, 80, 80);
+}
