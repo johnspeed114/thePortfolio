@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/309.a2ee3906.chunk.js","mappings":"+IAMA,UAJmB,WACjB,OAAO,wBAAI,kDACb,C","sources":["components/Pages/Auth/RegSuccess.js"],"sourcesContent":["import React from 'react';\r\n\r\nconst RegSuccess = () => {\r\n  return <h2>Registration Successful! Welcome to The Party!</h2>;\r\n};\r\n\r\nexport default RegSuccess;\r\n"],"names":[],"sourceRoot":""}
