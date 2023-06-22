@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useContext } from 'react';
+import React, { lazy, Suspense, useContext } from 'react';
 import {
   Navbar,
   Nav,
@@ -10,14 +10,16 @@ import {
 } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import AuthContext from 'store/auth-context';
-import About from '../Pages/About';
-import SketchApp from '../Pages/Projects/SketchApp/SketchApp';
-import Home from '../Pages/Home';
-import Login from 'components/Pages/Auth/Login';
 import logo from '../../assets/mylogo.png';
-import Register from 'components/Pages/Auth/Register';
-import RegSuccess from 'components/Pages/Auth/RegSuccess';
-import LeaderboardApp from 'components/Pages/Projects/LeaderboardApp/LeaderboardApp';
+const About = lazy(() => import('../Pages/About'));
+const SketchApp = lazy(() => import('../Pages/Projects/SketchApp/SketchApp'));
+const Home = lazy(() => import('../Pages/Home'));
+const Login = lazy(() => import('components/Pages/Auth/Login'));
+const Register = lazy(() => import('components/Pages/Auth/Register'));
+const RegSuccess = lazy(() => import('components/Pages/Auth/RegSuccess'));
+const LeaderboardApp = lazy(() =>
+  import('components/Pages/Projects/LeaderboardApp/LeaderboardApp')
+);
 
 const NavBarComp = () => {
   const ctx = useContext(AuthContext);
@@ -88,7 +90,6 @@ const NavBarComp = () => {
                   Search
                 </Button>
               </Form>
-              {/* { maybe use react memo since we dont need render this all the time unless logged in */}
               {ctx.isLoggedIn ? (
                 <>
                   <div style={{ margin: 'auto' }}>
@@ -113,13 +114,62 @@ const NavBarComp = () => {
         </Navbar>
       </div>
       <Routes>
-        <Route path='/about' element={<About />} />
-        <Route path='/thePortfolio' element={<Home />} />
-        <Route path='/projects/randomized_sketch_app' element={<SketchApp />} />
-        <Route path='/projects/leaderboard_app' element={<LeaderboardApp />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/success' element={<RegSuccess />} />
+        <Route
+          path='/about'
+          element={
+            <Suspense fallback={<>Loading...</>}>
+              <About />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/thePortfolio'
+          element={
+            <Suspense fallback={<>Loading...</>}>
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/projects/randomized_sketch_app'
+          element={
+            <Suspense fallback={<>Loading...</>}>
+              <SketchApp />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/projects/leaderboard_app'
+          element={
+            <Suspense fallback={<>Loading...</>}>
+              <LeaderboardApp />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/login'
+          element={
+            <Suspense fallback={<>Loading...</>}>
+              <Login />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/register'
+          element={
+            <Suspense fallback={<>Loading...</>}>
+              <Register />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/success'
+          element={
+            <Suspense fallback={<>Loading...</>}>
+              <RegSuccess />
+            </Suspense>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

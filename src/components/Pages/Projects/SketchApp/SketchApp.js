@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
+
 import './styles.scss';
 
 const FormPopup = ({ resizeSketch }) => {
@@ -95,21 +96,24 @@ const SketchApp = () => {
   }
 
   return (
-    <div className='bg-grey'>
-      <div className='containerGrid mt-5'>
-        {gridItems.map((item) => (
-          <div
-            key={item.id}
-            className='gridbox'
-            style={{ backgroundColor: item.color }}
-            onMouseEnter={() => handleMouseEnter(item.id)}
-          />
-        ))}
+    <div className='bg-green mt-5 text-center'>
+      <h2>Randomized Sketch App</h2>
+      <div className='bg-grey'>
+        <div className='containerGrid mt-2'>
+          {gridItems.map((item) => (
+            <div
+              key={item.id}
+              className='gridbox'
+              style={{ backgroundColor: item.color }}
+              onMouseEnter={() => handleMouseEnter(item.id)}
+            />
+          ))}
+        </div>
+        <FormPopup resizeSketch={resizeSketch} />
+        <button className='clearButton' onClick={clearGrid}>
+          Clear Sketch
+        </button>
       </div>
-      <FormPopup resizeSketch={resizeSketch} />
-      <button className='clearButton' onClick={clearGrid}>
-        Clear Sketch
-      </button>
     </div>
   );
 };
