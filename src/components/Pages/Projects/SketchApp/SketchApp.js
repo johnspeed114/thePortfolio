@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
-import './styles.css';
+import './styles.scss';
 
 const FormPopup = ({ resizeSketch }) => {
   const [isOpen, setIsOpen] = useState(false);

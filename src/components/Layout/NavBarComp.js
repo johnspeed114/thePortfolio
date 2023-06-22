@@ -67,7 +67,7 @@ const NavBarComp = () => {
                   href='#action5'
                   as={Link}
                   to={'/projects/leaderboard_app'}>
-                  Stream Live Rank App
+                  Streamer Leaderboard App
                 </NavDropdown.Item>
               </NavDropdown>
 

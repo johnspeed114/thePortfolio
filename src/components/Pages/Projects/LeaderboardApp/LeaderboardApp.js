@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Reorder } from 'framer-motion';
 import { Card } from 'react-bootstrap';
 import Streamer from './Streamer';
-import './styles.css';
+import './styles.scss';
 const LeaderboardApp = () => {
   const [streamerList, setStreamersList] = useState([]);
 
@@ -53,7 +53,13 @@ const LeaderboardApp = () => {
 
   return (
     <div className='leaderboard'>
-      <Reorder.Group values={streamerList} onReorder={setStreamersList}>
+      <h2 className='mb-3 text-center text-light leaderboard__title'>
+        Streamer Leaderboard
+      </h2>
+      <Reorder.Group
+        values={streamerList}
+        onReorder={setStreamersList}
+        as='div'>
         <Card>
           {streamerList.map((streamer, index) => (
             // Replaced the use of index as a key in the .map() function with streamer.userID.

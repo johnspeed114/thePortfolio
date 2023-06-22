@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css'; // assuming the CSS file is located in this path
+import './styles.scss'; // assuming the CSS file is located in this path
 
 const Streamer = ({ number, userId, displayName, picture, score }) => {
   return (
