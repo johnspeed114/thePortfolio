@@ -26,7 +26,7 @@ const Login = () => {
         .then((useCredential) => {
           //FYI to make sure that login state is sync with local
           authCtx.onLogin();
-          navigate('/home');
+          navigate('/thePortfolio');
         })
         .catch((error) => {
           // Handle Errors here.
