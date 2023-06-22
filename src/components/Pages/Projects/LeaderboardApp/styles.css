@@ -1,0 +1,65 @@
+.leaderboard {
+  font-family: Arial, sans-serif;
+  background-color: #222;
+  color: #573131;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.6;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 1%;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.leaderboard__container {
+  height: 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
+  padding: 10px 5px;
+}
+
+.leaderboard__itemNum,
+.leaderboard__displayName,
+.leaderboard__points {
+  flex: 1;
+}
+
+.leaderboard__itemNum {
+  text-align: left;
+}
+
+.leaderboard__points {
+  text-align: right;
+}
+
+/* For ProfilePic component */
+.leaderboard__profilePic {
+  background-size: 100%;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  border: 2px solid rgb(255, 255, 255);
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+@media (max-width: 600px) {
+  .leaderboard__profilePic {
+    background-size: cover;
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+  }
+}

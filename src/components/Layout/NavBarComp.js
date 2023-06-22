@@ -11,12 +11,13 @@ import {
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import AuthContext from 'store/auth-context';
 import About from '../Pages/About';
-import SketchApp from '../Pages/Projects/SketchApp';
+import SketchApp from '../Pages/Projects/SketchApp/SketchApp';
 import Home from '../Pages/Home';
 import Login from 'components/Pages/Auth/Login';
 import logo from '../../assets/mylogo.png';
 import Register from 'components/Pages/Auth/Register';
 import RegSuccess from 'components/Pages/Auth/RegSuccess';
+import LeaderboardApp from 'components/Pages/Projects/LeaderboardApp/LeaderboardApp';
 
 const NavBarComp = () => {
   const ctx = useContext(AuthContext);
@@ -29,7 +30,7 @@ const NavBarComp = () => {
           variant='light'
           expand='lg'
           style={{ paddingLeft: '1em' }}>
-          <Navbar.Brand href='/home'>
+          <Navbar.Brand href='/thePortfolio'>
             <img
               src={logo}
               width='40'
@@ -62,20 +63,13 @@ const NavBarComp = () => {
                   Randomized Sketch App
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href='#action5'>
+                <NavDropdown.Item
+                  href='#action5'
+                  as={Link}
+                  to={'/projects/leaderboard_app'}>
                   Stream Live Rank App
                 </NavDropdown.Item>
               </NavDropdown>
-              {/* <NavDropdown title='Link' id='navbarScrollingDropdown'>
-                <NavDropdown.Item href='#action3'>Action</NavDropdown.Item>
-                <NavDropdown.Item href='#action4'>
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href='#action5'>
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown> */}
 
               {/* [todo]set up my link page */}
               <Nav.Link href='#' disabled>
@@ -120,9 +114,9 @@ const NavBarComp = () => {
       </div>
       <Routes>
         <Route path='/about' element={<About />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/thePortfolio' element={<Home />} />
         <Route path='/projects/randomized_sketch_app' element={<SketchApp />} />
-        {/* <Route path='/projects/stream_rank_app' element={<StreamApp />} /> */}
+        <Route path='/projects/leaderboard_app' element={<LeaderboardApp />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/success' element={<RegSuccess />} />

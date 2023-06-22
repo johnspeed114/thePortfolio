@@ -1,8 +1,5 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 const FormPopup = ({ resizeSketch }) => {
@@ -98,8 +95,8 @@ const SketchApp = () => {
   }
 
   return (
-    <div>
-      <div className='containerGrid'>
+    <div className='bg-grey'>
+      <div className='containerGrid mt-5'>
         {gridItems.map((item) => (
           <div
             key={item.id}

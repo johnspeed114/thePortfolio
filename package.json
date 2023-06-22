@@ -17,6 +17,7 @@
     "bootstrap": "^5.2.3",
     "chevrotain": "^10.4.2",
     "firebase": "^9.22.2",
+    "framer-motion": "^10.12.16",
     "path-dirname": "^1.0.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
