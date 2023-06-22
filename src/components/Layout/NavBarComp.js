@@ -58,14 +58,14 @@ const NavBarComp = () => {
               <Nav.Link href="#action1" as={Link} to={"/thePortfolio"}>
                 Home
               </Nav.Link>
-              <Nav.Link href="#action2" as={Link} to={"/about"}>
+              <Nav.Link href="#action2" as={Link} to={"/thePortfolio/about"}>
                 About
               </Nav.Link>
               <NavDropdown title="Projects" id="navbarScrollingDropdown">
                 <NavDropdown.Item
                   href="#action3"
                   as={Link}
-                  to={"projects/randomized_sketch_app"}
+                  to={"thePortfolio/projects/randomized_sketch_app"}
                 >
                   Randomized Sketch App
                 </NavDropdown.Item>
@@ -73,7 +73,7 @@ const NavBarComp = () => {
                 <NavDropdown.Item
                   href="#action5"
                   as={Link}
-                  to={"/projects/leaderboard_app"}
+                  to={"/thePortfolio/projects/leaderboard_app"}
                 >
                   Streamer Leaderboard App
                 </NavDropdown.Item>
@@ -101,16 +101,16 @@ const NavBarComp = () => {
                   <div style={{ margin: "auto" }}>
                     Welcome! {ctx.displayName}
                   </div>
-                  <Button onClick={ctx.onLogout} to={"/home"} className="ms-2">
+                  <Button onClick={ctx.onLogout} to={"/thePortfolio"} className="ms-2">
                     Logout
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button className="me-2" as={Link} to={"/login"}>
+                  <Button className="me-2" as={Link} to={"/thePortfolio/login"}>
                     Login
                   </Button>
-                  <Button as={Link} to={"/register"}>
+                  <Button as={Link} to={"/thePortfolio/register"}>
                     Register
                   </Button>
                 </>
@@ -130,7 +130,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path="/about"
+          path="/thePortfolio/about"
           element={
             <Suspense fallback={<>Loading...</>}>
               <About />
@@ -146,7 +146,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path="/projects/randomized_sketch_app"
+          path="/thePortfolio/projects/randomized_sketch_app"
           element={
             <Suspense fallback={<>Loading...</>}>
               <SketchApp />
@@ -154,7 +154,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path="/projects/leaderboard_app"
+          path="/thePortfolio/projects/leaderboard_app"
           element={
             <Suspense fallback={<>Loading...</>}>
               <LeaderboardApp />
@@ -162,7 +162,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path="/login"
+          path="/thePortfolio/login"
           element={
             <Suspense fallback={<>Loading...</>}>
               <Login />
@@ -170,7 +170,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path="/register"
+          path="/thePortfolio/register"
           element={
             <Suspense fallback={<>Loading...</>}>
               <Register />
@@ -178,7 +178,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path="/success"
+          path="/thePortfolio/success"
           element={
             <Suspense fallback={<>Loading...</>}>
               <RegSuccess />
