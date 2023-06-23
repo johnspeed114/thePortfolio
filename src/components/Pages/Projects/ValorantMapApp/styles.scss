@@ -1,0 +1,18 @@
+.valorantmap {
+  font-family: Arial, sans-serif;
+  background-color: #222;
+
+  width: 100%;
+  height: 92.7vh; /* Assuming your navbar height is 70px, adjust accordingly */
+  overflow: auto;
+  padding: 0 1%;
+  background-color: #333;
+}
+
+.valorantmap__container {
+  //[Reminder] height container only controls container height if you go over valorantmap
+  //height you get two scroll bars
+  height: 84vh;
+  justify-content: center;
+  display: flex;
+}

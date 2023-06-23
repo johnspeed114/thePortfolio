@@ -11,6 +11,7 @@ import {
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import AuthContext from 'store/auth-context';
 import logo from '../../assets/mylogo.png';
+import ValorantMapApp from 'components/Pages/Projects/ValorantMapApp/ValorantMapApp';
 const Home = lazy(() => import('../Pages/Home'));
 const About = lazy(() => import('../Pages/About'));
 const SketchApp = lazy(() => import('../Pages/Projects/SketchApp/SketchApp'));
@@ -71,6 +72,13 @@ const NavBarComp = () => {
                   as={Link}
                   to={'/thePortfolio/projects/leaderboard_app'}>
                   Streamer Leaderboard App
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item
+                  href='#action6'
+                  as={Link}
+                  to={'/thePortfolio/projects/valorant_map_app'}>
+                  Valorant Map App
                 </NavDropdown.Item>
               </NavDropdown>
 
@@ -134,8 +142,8 @@ const NavBarComp = () => {
           element={
             <Suspense
               fallback={
-                <div class='spinner-border text-primary' role='status'>
-                  <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
                 </div>
               }>
               <Home />
@@ -147,8 +155,8 @@ const NavBarComp = () => {
           element={
             <Suspense
               fallback={
-                <div class='spinner-border text-primary' role='status'>
-                  <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
                 </div>
               }>
               <About />
@@ -160,8 +168,8 @@ const NavBarComp = () => {
           element={
             <Suspense
               fallback={
-                <div class='spinner-border text-primary' role='status'>
-                  <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
                 </div>
               }>
               <Contact />
@@ -173,8 +181,8 @@ const NavBarComp = () => {
           element={
             <Suspense
               fallback={
-                <div class='spinner-border text-primary' role='status'>
-                  <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
                 </div>
               }>
               <SketchApp />
@@ -186,11 +194,24 @@ const NavBarComp = () => {
           element={
             <Suspense
               fallback={
-                <div class='spinner-border text-primary' role='status'>
-                  <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
                 </div>
               }>
               <LeaderboardApp />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/thePortfolio/projects/valorant_map_app'
+          element={
+            <Suspense
+              fallback={
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
+                </div>
+              }>
+              <ValorantMapApp />
             </Suspense>
           }
         />
@@ -199,8 +220,8 @@ const NavBarComp = () => {
           element={
             <Suspense
               fallback={
-                <div class='spinner-border text-primary' role='status'>
-                  <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
                 </div>
               }>
               <Login />
@@ -212,8 +233,8 @@ const NavBarComp = () => {
           element={
             <Suspense
               fallback={
-                <div class='spinner-border text-primary' role='status'>
-                  <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
                 </div>
               }>
               <Register />
@@ -225,8 +246,8 @@ const NavBarComp = () => {
           element={
             <Suspense
               fallback={
-                <div class='spinner-border text-primary' role='status'>
-                  <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-primary' role='status'>
+                  <span className='visually-hidden'>Loading...</span>
                 </div>
               }>
               <RegSuccess />
