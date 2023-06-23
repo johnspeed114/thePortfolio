@@ -50,7 +50,7 @@ function Home() {
               proficiency in languages like JavaScript, HTML, CSS, TypeScript,
               and React, I'm ready to tackle challenges and offer you unique
               solutions. <br /> <br />
-              PS: (click and drag the side of this page, and see what happens
+              PS: (click and drag the sides of this page, and see what happens
               😁)
             </Card.Body>
           </Card>
@@ -63,7 +63,7 @@ function Home() {
             )}
             <Card.Body>
               <Button variant='primary' onClick={loadImage}>
-                Randomize Pic
+                Click! Randomize Pic
               </Button>
             </Card.Body>
           </Card>
