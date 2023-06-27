@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab, Tabs, Image } from 'react-bootstrap';
+import { Tab, Tabs, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { mapData } from 'components/Utils/mapArray';
 import './styles.scss';
 
