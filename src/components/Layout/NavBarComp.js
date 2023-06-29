@@ -8,7 +8,7 @@ import {
   Button,
   NavDropdown,
 } from 'react-bootstrap';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { HashRouter, Route, Routes, Link } from 'react-router-dom';
 import AuthContext from 'store/auth-context';
 import logo from '../../assets/mylogo.png';
 import ValorantMapApp from 'components/Pages/Projects/ValorantMapApp/ValorantMapApp';
@@ -27,7 +27,7 @@ const NavBarComp = () => {
   const ctx = useContext(AuthContext);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div>
         <Navbar
           bg='light'
@@ -255,7 +255,7 @@ const NavBarComp = () => {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
