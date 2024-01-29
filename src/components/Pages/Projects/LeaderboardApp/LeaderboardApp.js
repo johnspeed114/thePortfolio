@@ -6,8 +6,10 @@ import './styles.scss';
 const LeaderboardApp = () => {
   const [streamerList, setStreamersList] = useState([]);
 
+  //going to use react routerr for this instead of the link
+  //iife since async function cannot be used in useEffect
   useEffect(() => {
-    const getData = async () => {
+    (async () => {
       try {
         const response = await fetch(
           'https://webcdn.17app.co/campaign/pretest/data.json'
@@ -20,9 +22,7 @@ const LeaderboardApp = () => {
       } catch (error) {
         console.log(error);
       }
-    };
-
-    getData();
+    })();
   }, []);
 
   useEffect(() => {
@@ -48,6 +48,7 @@ const LeaderboardApp = () => {
 
     const interval = setInterval(randomizer, 100);
 
+    // @ts-ignore
     return () => clearInterval(interval);
   }, [streamerList]);
 

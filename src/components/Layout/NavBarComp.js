@@ -8,7 +8,7 @@ import {
   Button,
   NavDropdown,
 } from 'react-bootstrap';
-import { HashRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import AuthContext from 'store/auth-context';
 import logo from '../../assets/mylogo.png';
 import ValorantMapApp from 'components/Pages/Projects/ValorantMapApp/ValorantMapApp';
@@ -27,14 +27,14 @@ const NavBarComp = () => {
   const ctx = useContext(AuthContext);
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div>
         <Navbar
           bg='light'
           variant='light'
           expand='lg'
           style={{ paddingLeft: '1em' }}>
-          <Navbar.Brand href='/thePortfolio'>
+          <Navbar.Brand href='/'>
             <img
               src={logo}
               width='40'
@@ -53,37 +53,37 @@ const NavBarComp = () => {
               className='mr-auto my-2 my-lg-0'
               style={{ maxHeight: '100px' }}
               navbarScroll>
-              <Nav.Link href='#action1' as={Link} to={'/thePortfolio'}>
+              <Nav.Link href='#action1' as={Link} to={''}>
                 Home
               </Nav.Link>
-              <Nav.Link href='#action2' as={Link} to={'/thePortfolio/about'}>
+              <Nav.Link href='#action2' as={Link} to={'/about'}>
                 About
               </Nav.Link>
               <NavDropdown title='Projects' id='navbarScrollingDropdown'>
                 <NavDropdown.Item
                   href='#action3'
                   as={Link}
-                  to={'thePortfolio/projects/randomized_sketch_app'}>
+                  to={'/projects/randomized_sketch_app'}>
                   Randomized Sketch App
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   href='#action5'
                   as={Link}
-                  to={'/thePortfolio/projects/leaderboard_app'}>
+                  to={'/projects/leaderboard_app'}>
                   Streamer Leaderboard App
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   href='#action6'
                   as={Link}
-                  to={'/thePortfolio/projects/valorant_map_app'}>
+                  to={'/projects/valorant_map_app'}>
                   Valorant Map App
                 </NavDropdown.Item>
               </NavDropdown>
 
               {/* [todo]set up my link page */}
-              <Nav.Link href='#action6' as={Link} to={'/thePortfolio/contact'}>
+              <Nav.Link href='#action6' as={Link} to={'/contact'}>
                 Contact Me
               </Nav.Link>
             </Nav>
@@ -119,13 +119,13 @@ const NavBarComp = () => {
                   <Button
                     className='me-2'
                     as={Link}
-                    to={'/thePortfolio/login'}
+                    to={'/login'}
                     style={{ borderRadius: '2px' }}>
                     Login
                   </Button>
                   <Button
                     as={Link}
-                    to={'/thePortfolio/register'}
+                    to={'/register'}
                     style={{ borderRadius: '2px' }}>
                     Register
                   </Button>
@@ -138,7 +138,7 @@ const NavBarComp = () => {
 
       <Routes>
         <Route
-          path='/thePortfolio'
+          path=''
           element={
             <Suspense
               fallback={
@@ -151,7 +151,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path='/thePortfolio/about'
+          path='/about'
           element={
             <Suspense
               fallback={
@@ -164,7 +164,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path='/thePortfolio/contact'
+          path='/contact'
           element={
             <Suspense
               fallback={
@@ -177,7 +177,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path='/thePortfolio/projects/randomized_sketch_app'
+          path='/projects/randomized_sketch_app'
           element={
             <Suspense
               fallback={
@@ -190,7 +190,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path='/thePortfolio/projects/leaderboard_app'
+          path='/projects/leaderboard_app'
           element={
             <Suspense
               fallback={
@@ -203,7 +203,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path='/thePortfolio/projects/valorant_map_app'
+          path='/projects/valorant_map_app'
           element={
             <Suspense
               fallback={
@@ -216,7 +216,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path='/thePortfolio/login'
+          path='/login'
           element={
             <Suspense
               fallback={
@@ -229,7 +229,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path='/thePortfolio/register'
+          path='/register'
           element={
             <Suspense
               fallback={
@@ -242,7 +242,7 @@ const NavBarComp = () => {
           }
         />
         <Route
-          path='/thePortfolio/success'
+          path='/success'
           element={
             <Suspense
               fallback={
@@ -255,7 +255,7 @@ const NavBarComp = () => {
           }
         />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
