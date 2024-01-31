@@ -4,6 +4,7 @@ import eslint from 'vite-plugin-eslint';
 
 export default defineConfig(() => {
   return {
+    manifest: true,
     build: {
       outDir: 'build',
     },
