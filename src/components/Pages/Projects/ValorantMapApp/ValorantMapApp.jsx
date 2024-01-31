@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Tab, Tabs, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { mapData } from 'components/Utils/mapArray';
+import { Tab, Tabs, Image } from 'react-bootstrap';
+import { mapData } from '../../../Utils/mapArray';
 import './styles.scss';
 
 const ValorantMapApp = () => {

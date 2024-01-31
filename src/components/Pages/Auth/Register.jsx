@@ -4,9 +4,9 @@ import { auth } from '../../../firebase';
 import React, { useReducer, useState, useContext } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { formReducer } from 'store/AccountReducer';
-import AuthContext from 'store/auth-context';
-import validateInput from 'components/Utils/ValidationLogic';
+import { formReducer } from '../../../store/AccountReducer';
+import AuthContext from '../../../store/auth-context';
+import validateInput from '../../Utils/ValidationLogic';
 
 const Register = () => {
   // const [error, dispatchError] = useReducer(errorReducer, {error:''})

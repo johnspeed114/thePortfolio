@@ -9,19 +9,21 @@ import {
   NavDropdown,
 } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import AuthContext from 'store/auth-context';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import AuthContext from '../../store/auth-context';
 import logo from '../../assets/mylogo.png';
-import ValorantMapApp from 'components/Pages/Projects/ValorantMapApp/ValorantMapApp';
+import ValorantMapApp from '../Pages/Projects/ValorantMapApp/ValorantMapApp';
 const Home = lazy(() => import('../Pages/Home'));
 const About = lazy(() => import('../Pages/About'));
 const SketchApp = lazy(() => import('../Pages/Projects/SketchApp/SketchApp'));
 const LeaderboardApp = lazy(() =>
-  import('components/Pages/Projects/LeaderboardApp/LeaderboardApp')
+  import('../Pages/Projects/LeaderboardApp/LeaderboardApp')
 );
 const Contact = lazy(() => import('../Pages/Contact'));
-const Login = lazy(() => import('components/Pages/Auth/Login'));
-const Register = lazy(() => import('components/Pages/Auth/Register'));
-const RegSuccess = lazy(() => import('components/Pages/Auth/RegSuccess'));
+const Login = lazy(() => import('../Pages/Auth/Login'));
+const Register = lazy(() => import('../Pages/Auth/Register'));
+const RegSuccess = lazy(() => import('../Pages/Auth/RegSuccess'));
 
 const NavBarComp = () => {
   const ctx = useContext(AuthContext);
@@ -29,11 +31,7 @@ const NavBarComp = () => {
   return (
     <BrowserRouter>
       <div>
-        <Navbar
-          bg='light'
-          variant='light'
-          expand='lg'
-          style={{ paddingLeft: '1em' }}>
+        <Navbar bg='light' variant='light' expand='lg' className='ps-3'>
           <Navbar.Brand href='/'>
             <img
               src={logo}
@@ -48,12 +46,9 @@ const NavBarComp = () => {
           <Navbar.Toggle aria-controls='navbarScroll' />
           <Navbar.Collapse
             id='navbarScroll'
-            style={{ justifyContent: 'space-between' }}>
-            <Nav
-              className='mr-auto my-2 my-lg-0'
-              style={{ maxHeight: '100px' }}
-              navbarScroll>
-              <Nav.Link href='#action1' as={Link} to={''}>
+            className='justify-content-between'>
+            <Nav className='mr-auto my-2 my-lg-0 mh-100' navbarScroll>
+              <Nav.Link href='#action1' as={Link} to={'/'}>
                 Home
               </Nav.Link>
               <Nav.Link href='#action2' as={Link} to={'/about'}>
@@ -87,26 +82,21 @@ const NavBarComp = () => {
                 Contact Me
               </Nav.Link>
             </Nav>
-            <div className='d-flex' style={{ marginRight: '1em' }}>
+            <div className='d-flex me-3'>
               <Form className='d-flex'>
                 <FormControl
                   type='search'
                   placeholder='Coming Soon'
-                  className='mr-2'
-                  style={{ borderRadius: '2px' }}
+                  className='rounded-1'
                   aria-label='Search'
                 />
-                <Button
-                  style={{ marginRight: '2em', borderRadius: '2px' }}
-                  variant='secondary'>
+                <Button className='me-5 rounded-1' variant='secondary'>
                   Search
                 </Button>
               </Form>
               {ctx.isLoggedIn ? (
                 <>
-                  <div style={{ margin: 'auto' }}>
-                    Welcome! {ctx.displayName}
-                  </div>
+                  <div className='mx-auto'>Welcome! {ctx.displayName}</div>
                   <Button
                     onClick={ctx.onLogout}
                     to={'/thePortfolio'}
@@ -116,17 +106,10 @@ const NavBarComp = () => {
                 </>
               ) : (
                 <>
-                  <Button
-                    className='me-2'
-                    as={Link}
-                    to={'/login'}
-                    style={{ borderRadius: '2px' }}>
+                  <Button className='me-2 rounded-1' as={Link} to={'/login'}>
                     Login
                   </Button>
-                  <Button
-                    as={Link}
-                    to={'/register'}
-                    style={{ borderRadius: '2px' }}>
+                  <Button as={Link} to={'/register'} className='rounded-1'>
                     Register
                   </Button>
                 </>
@@ -138,7 +121,7 @@ const NavBarComp = () => {
 
       <Routes>
         <Route
-          path=''
+          path='/'
           element={
             <Suspense
               fallback={

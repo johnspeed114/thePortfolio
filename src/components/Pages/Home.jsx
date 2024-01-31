@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
 
-import ThreeDLogo from 'components/Utils/ThreeDLogo.js';
+import ThreeDLogo from '../Utils/ThreeDLogo.jsx';
 import '../../App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,7 +13,7 @@ function Home() {
 
   const loadImage = () => {
     const image = new Image();
-    image.src = `https://picsum.photos/2000/800?random=${Date.now()}`;
+    image.src = `https://picsum.photos/2000/750?random=${Date.now()}`;
 
     image.onload = () => {
       setImgSrc(image.src);
@@ -33,7 +33,7 @@ function Home() {
 
   return (
     <div>
-      <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+      <div class='position-absolute w-100 h-100'>
         <ThreeDLogo />
       </div>
       <header className='App-header'>
@@ -41,10 +41,10 @@ function Home() {
           {/* You can use fluid to make it resize to fit the entire page auto */}
 
           <Card className='titlewelcome-card bg-transparent mt-1'>
-            <Card.Body className='titlewelcome-card-body bg-transparent font-weight-bold'>
+            <Card.Body className='titlewelcome-card-body bg-transparent font-weight-bold text-white'>
               Welcome to John's Portolfio Site
             </Card.Body>
-            <Card.Body className='h6 bg-transparent'>
+            <Card.Body className='h6 bg-transparent text-white'>
               I'm a Full Stack Developer, passionate about creating innovative
               web applications and enhancing user experience. With my
               proficiency in languages like JavaScript, HTML, CSS, TypeScript,
@@ -55,7 +55,7 @@ function Home() {
             </Card.Body>
           </Card>
 
-          <Card className='mb-3' style={{ color: '#000', marginTop: '3%' }}>
+          <Card className='mb-3 mt-2 text-black'>
             {loading ? (
               <Spinner animation='border' />
             ) : (

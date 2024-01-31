@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState, useContext } from 'react';
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
-import AuthContext from 'store/auth-context';
+import AuthContext from '../../../store/auth-context';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';

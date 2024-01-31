@@ -5,7 +5,7 @@ https://dash.valorant-api.com/
 
 FYI since it's an old repo. need to use npm i -g npm-check-updates
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Vite].
 
 ## Available Scripts
 

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import { motion } from 'framer-motion';
-import ThreeDLogo from 'components/Utils/ThreeDLogo.js';
+import ThreeDLogo from '../Utils/ThreeDLogo.jsx';
 import { Button, Card, Container } from 'react-bootstrap';
 import profilePic from '../../assets/profile.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
